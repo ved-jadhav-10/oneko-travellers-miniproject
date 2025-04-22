@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us – Oneko Airlines</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    
+    :root {
+      --primary: #9DD1F1;
+      --secondary: #508AA8;
+      --accent: #C8E0F4;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--accent);
+      color: #1a1a1a;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in-out both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="m-0 p-0">
+  <header class="bg-black text-white p-6 flex justify-between items-center fixed top-0 w-full z-50 shadow-lg">
+    <div class="text-2xl font-extrabold tracking-wide">Oneko Travellers</div>
+    <nav class="flex space-x-6 text-lg">
+      <a href="home.html" class="hover:text-gray-400">Home</a>
+      <a href="form.html" class="hover:text-gray-400">Booking</a>
+      <a href="international.html" class="hover:text-gray-400">International Destinations</a>
+      <a href="national.html" class="hover:text-gray-400">National Destinations</a>
+      <a href="teams_Page.html" class="hover:text-gray-400">Team Members</a>
+      <a href="minigame.html" class="hover:text-gray-400">Minigame</a>
+      <a href="about.html" class="hover:text-gray-400">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- Spacer below navbar -->
+  <div class="h-20"></div>
+
+  <div class="max-w-4xl mx-auto p-6">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold">Contact Us</h1>
+      <p class="text-md text-gray-700">Contact: <a href="mailto:onekotravellers@gmail.com" class="underline">onekotravellers@gmail.com</a> | 9767572415</p>
+    </header>
+
+    <main class="space-y-6">
+      <details class="bg-white p-4 rounded shadow cursor-pointer">
+        <summary class="font-semibold text-lg">About us</summary>
+        <div class="mt-2 text-sm space-y-3">
+          <p>
+            At Oneko Travellers, we believe that every journey begins with a dream and a destination. As a premier travel service provider, we specialize in offering top-tier flight experiences to both domestic and international travelers. Whether you're planning a weekend getaway or a global adventure, Oneko Travellers is your trusted partner in making travel seamless, affordable, and memorable.
+          </p>
+          <p>
+            Our platform features the top 10 domestic and international flight options, handpicked for their exceptional service, affordability, and convenience. From the bustling streets of India like Goa, Jaipur, and Leh to international hotspots such as Dubai, London, and New York — we bring the world closer to you. With real-time flight updates, competitive pricing, and exclusive deals, we ensure you get the best value every time you fly with us.
+          </p>
+          <p>
+            Driven by a passion for exploration and customer satisfaction, Oneko Travellers is committed to making air travel easy and enjoyable. Our user-friendly booking system, 24/7 customer support, and transparent policies are designed to give you peace of mind from takeoff to landing. Whether you're a frequent flyer or an occasional explorer, we invite you to experience the Oneko difference and fly smarter with us.
+          </p>
+        </div>
+      </details>
+
+      <details class="bg-white p-4 rounded shadow cursor-pointer">
+        <summary class="font-semibold text-lg">View Terms & Conditions</summary>
+        <div class="mt-2 text-sm space-y-3">
+          <p>
+            By booking a flight, checking in, or using any service provided by Oneko Travellers, passengers agree to the following terms and conditions. All tickets must be paid in full at the time of booking, and are non-transferable unless stated otherwise in the fare class.
+          </p>
+          <p>
+            Valid identification is required during check-in, which closes 45 minutes prior to departure for domestic flights and 60 minutes for international flights. Boarding gates close 15 minutes before departure, and late arrivals may be denied boarding without refund. All bookings are subject to availability and confirmation by the respective airlines.
+          </p>
+          <p>
+            It is the responsibility of the user to provide accurate personal and travel information at the time of booking. Any discrepancies may lead to denial of boarding or cancellation without refund.
+          </p>
+          <p>
+            Refund and cancellation policies vary depending on fare type; non-refundable tickets are common for our lowest fares. In the event of delays or cancellations caused by the airline, passengers may be eligible for rebooking or a refund as per our compensation guidelines.
+          </p>
+          <p>
+            We reserve the right to change schedules, aircraft, or routes due to operational requirements.
+          </p>
+        </div>
+      </details>
+    </main>
+
+    <footer class="mt-12 border-t pt-4 text-sm text-gray-700">
+      <p>© 2025 Oneko Travellers</p>
+      <p>Contact: onekotravellers@gmail.com | 9767572415</p>
+    </footer>
+  </div>
+
+</body>
+</html>

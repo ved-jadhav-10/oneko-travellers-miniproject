@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Plan Form</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #9dd1f1;
+    }
+  </style>
+</head>
+<body class="min-h-screen py-10 bg-accent font-montserrat text-black">
+
+  <!-- Navbar -->
+  <nav class="bg-black text-white p-6 flex justify-between items-center fixed top-0 w-full z-50">
+    <div class="text-2xl font-bold">Oneko Travellers</div>
+    <ul class="flex space-x-6">
+      <a href="home.html" class="hover:text-gray-400">Home</a>
+      <a href="form.html" class="hover:text-gray-400">Booking</a>
+      <a href="international.html" class="hover:text-gray-400">International Destinations</a>
+      <a href="national.html" class="hover:text-gray-400">National Destinations</a>
+      <a href="teams_Page.html" class="hover:text-gray-400">Team Members</a>
+      <a href="minigame.html" class="hover:text-gray-400">Minigame</a>
+      <a href="about.html" class="hover:text-gray-400">Contact Us</a>
+    </ul>
+  </nav>
+
+  <!-- Spacer below navbar -->
+  <div class="h-24"></div>
+
+  <form id="travelForm" class="bg-white p-8 rounded-2xl shadow-xl max-w-md mx-auto space-y-4 fade-in">
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">✍️ Travel Plan Form</h2>
+
+    <div>
+      <label for="name" class="block font-semibold">Name:</label>
+      <input type="text" id="name" name="name" required class="form-input w-full border border-gray-300 rounded-lg px-4 py-2">
+    </div>
+
+    <div>
+      <label for="email" class="block font-semibold">Mail Id:</label>
+      <input type="email" id="email" name="email" required class="form-input w-full border border-gray-300 rounded-lg px-4 py-2">
+    </div>
+
+    <div>
+      <label for="age" class="block font-semibold">Age:</label>
+      <input type="number" id="age" name="age" min="0" required class="form-input w-full border border-gray-300 rounded-lg px-4 py-2">
+    </div>
+
+    <div>
+      <label for="phone" class="block font-semibold">Phone No.:</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required class="form-input w-full border border-gray-300 rounded-lg px-4 py-2">
+    </div>
+
+    <div>
+      <label for="days" class="block font-semibold">No of Days:</label>
+      <input type="number" id="days" name="days" min="1" required class="form-input w-full border border-gray-300 rounded-lg px-4 py-2">
+    </div>
+
+    <div>
+      <label for="budget" class="block font-semibold">Budget:</label>
+      <input type="number" id="budget" name="budget" min="0" required class="form-input w-full border border-gray-300 rounded-lg px-4 py-2">
+    </div>
+
+    <div>
+      <label for="people" class="block font-semibold">No. of People:</label>
+      <input type="number" id="people" name="people" min="1" required class="form-input w-full border border-gray-300 rounded-lg px-4 py-2">
+    </div>
+
+    <div>
+      <label for="type" class="block font-semibold">Domestic or International:</label>
+      <select id="type" name="type" required class="form-input w-full border border-gray-300 rounded-lg px-4 py-2">
+        <option value="">--Select--</option>
+        <option value="domestic">Domestic</option>
+        <option value="international">International</option>
+      </select>
+    </div>
+
+    <button type="submit" class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
+      Submit
+    </button>
+  </form>
+
+  <script>
+    document.getElementById('travelForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert("✅ Thank you for filling the form! We have received your response. Our team will reach out to you soon.");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>

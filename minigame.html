@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plane Dodge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: #000000;
+            background: url("https://i.pinimg.com/originals/18/af/aa/18afaa5a50a6ff0bbb825a11d505ecbb.gif") center/cover;  
+            background-attachment: fixed;
+            overflow-y: auto;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            padding: 20px 10px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-family: 'Pixelify Sans', sans-serif;
+            font-size: 56px;
+            color: #eff9ff;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .game-container {
+            position: relative;
+            width: 400px;
+            animation: scrollBackground 5s linear infinite;
+            height: 600px;
+            border: 2px solid white;
+            background: url("https://i.ibb.co/mVwQKgpm/sky.png") center/cover;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+        }
+        .spaceship {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            bottom: 50px;
+            left: 180px;
+            background: no-repeat center/contain;
+            transition: transform 0.1s ease-in-out;
+        }
+        .meteor {
+            width: 34px;
+            height: 34px;
+            position: absolute;
+            background: url('https://i.ibb.co/svydSx45/Untitled-design-2.png') no-repeat center/contain;
+        }
+        .game-over {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            display: none;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            margin-top: 20px;
+        }
+        .control-btn {
+            width: 80px;
+            height: 50px;
+            font-size: 18px;
+            border: none;
+            background-color: #9dd1f1;
+            color: white;
+            border-radius: 5px;
+        }
+        #skin-selection {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .skin-option {
+            width: 40px;
+            height: 40px;
+            border: 2px solid white;
+            border-radius: 4px;
+            background: center/contain no-repeat;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+        .skin-option.unlocked {
+            opacity: 1;
+        }
+        .skin-option.selected {
+            border: 2px solid yellow;
+        }
+        #leaderboard {
+        margin-top: 20px;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        }
+
+        .podium {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        height: 120px;
+        margin-bottom: 15px;
+        }
+
+        .podium div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: #444;
+        border-radius: 5px 5px 5px 5px;
+        padding: 5px;
+        color: white;
+        width: 80px;
+        }
+
+        .podium .first {
+        height: 100px;
+        width: 100px;
+        background-color: gold;
+        color: black;
+        font-weight: bold;
+        }
+
+        .podium .second {
+        height: 80px;
+        background-color: silver;
+        color: black;
+        }
+
+        .podium .third {
+        height: 60px;
+        background-color: #cd7f32;
+        color: black;
+        }
+
+        #leaderboard-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        #leaderboard-box h3 {
+            margin-top: 0;
+            color: gold;
+            font-size: 20px;
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
+        }
+
+        #leaderboard-box ol {
+            padding-left: 20px;
+            text-align: left;
+        }
+
+
+        footer {
+            margin-top: 20px;
+            font-size: 16px;
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body class="m-0 p-0">
+
+    <!-- Header/Navbar -->
+    <header class="bg-black text-white p-6 flex justify-between items-center fixed top-0 w-full z-50 shadow-lg">
+      <div class="text-2xl font-extrabold tracking-wide">Oneko Travellers</div>
+      <nav class="flex space-x-6 text-lg">
+        <a href="home.html" class="hover:text-gray-400">Home</a>
+        <a href="form.html" class="hover:text-gray-400">Booking</a>
+        <a href="international.html" class="hover:text-gray-400">International Destinations</a>
+        <a href="national.html" class="hover:text-gray-400">National Destinations</a>
+        <a href="teams_Page.html" class="hover:text-gray-400">Team Members</a>
+        <a href="minigame.html" class="hover:text-gray-400">Minigame</a>
+        <a href="about.html" class="hover:text-gray-400">Contact Us</a>
+      </nav>
+    </header>
+    
+  <div class="h-24"></div>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+        <h1>Pixel Plane Minigame</h1>
+    <div id="skin-selection"></div>
+    <audio id="explosionSound"></audio>
+    <div class="game-container" id="game-container">
+        <div class="spaceship" id="spaceship"></div>
+        <div class="game-over" id="game-over">
+            Game Over!<br>
+            Score: <span id="score">0</span><br>
+            <button id="restart-btn" class="control-btn" style="margin-top: 10px;">Restart</button>
+        </div>
+    </div>
+    <div class="controls">
+        <button class="control-btn" id="left-btn">⬅️</button>
+        <button class="control-btn" id="right-btn">➡️</button>
+    </div>
+    <div id="leaderboard-box">
+        <div id="leaderboard"></div>
+    </div>
+    
+    <footer></footer>
+    <script>
+        const spaceship = document.getElementById("spaceship");
+        const gameContainer = document.getElementById("game-container");
+        const gameOverText = document.getElementById("game-over");
+        const scoreDisplay = document.getElementById("score");
+        const explosionSound = document.getElementById("explosionSound");
+        const leftBtn = document.getElementById("left-btn");
+        const rightBtn = document.getElementById("right-btn");
+        const restartBtn = document.getElementById("restart-btn");
+        const leaderboard = document.getElementById("leaderboard");
+        const skinSelection = document.getElementById("skin-selection");
+
+        let spaceshipX = 180;
+        let gameActive = true;
+        let score = 0;
+        let gameInterval;
+        let selectedSkinIndex = 0;
+
+        const skins = [
+            { url: "https://i.ibb.co/J4xVQfR/model.png", unlockScore: 0 },
+            { url: "https://i.ibb.co/4RN5qP87/model-1.png", unlockScore: 10 },
+            { url: "https://i.ibb.co/KjdMF2Ff/model-2.png", unlockScore: 20 }
+        ];
+
+        function setupSkinSelection() {
+            skinSelection.innerHTML = "";
+            skins.forEach((skin, index) => {
+                const skinEl = document.createElement("div");
+                skinEl.classList.add("skin-option");
+                skinEl.style.backgroundImage = `url(${skin.url})`;
+                const unlocked = score >= skin.unlockScore;
+                if (unlocked) skinEl.classList.add("unlocked");
+                if (index === selectedSkinIndex) skinEl.classList.add("selected");
+                skinEl.addEventListener("click", () => {
+                    if (unlocked) {
+                        selectedSkinIndex = index;
+                        spaceship.style.backgroundImage = `url(${skin.url})`;
+                        setupSkinSelection();
+                    }
+                });
+                skinSelection.appendChild(skinEl);
+            });
+        }
+
+        function moveLeft() {
+            if (!gameActive) return;
+            if (spaceshipX > 0) spaceshipX -= 20;
+            spaceship.style.left = `${spaceshipX}px`;
+        }
+        function moveRight() {
+            if (!gameActive) return;
+            if (spaceshipX < 360) spaceshipX += 20;
+            spaceship.style.left = `${spaceshipX}px`;
+        }
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowLeft") moveLeft();
+            if (event.key === "ArrowRight") moveRight();
+        });
+        leftBtn.addEventListener("click", moveLeft);
+        rightBtn.addEventListener("click", moveRight);
+
+        function spawnMeteor() {
+            if (!gameActive) return;
+            const meteor = document.createElement("div");
+            meteor.classList.add("meteor");
+            let meteorX = Math.random() * 370;
+            meteor.style.left = `${meteorX}px`;
+            meteor.style.top = "0px";
+            gameContainer.appendChild(meteor);
+
+            function moveMeteor() {
+                if (!gameActive) return;
+                let meteorY = parseInt(meteor.style.top) + 3;
+                meteor.style.top = `${meteorY}px`;
+
+                const meteorRect = meteor.getBoundingClientRect();
+                const spaceshipRect = spaceship.getBoundingClientRect();
+                const containerRect = gameContainer.getBoundingClientRect();
+
+                const offsetTop = containerRect.top;
+                const offsetLeft = containerRect.left;
+
+                const mTop = meteorY;
+                const mLeft = parseFloat(meteor.style.left);
+                const mRight = mLeft + 34;
+                const sLeft = spaceshipX;
+                const sRight = sLeft + 40;
+                const sTop = 550;
+                const sBottom = sTop + 40;
+
+                if (
+                    mTop + 34 > sTop &&
+                    mTop < sBottom &&
+                    mLeft < sRight &&
+                    mRight > sLeft
+                ) {
+                    explosionSound.play();
+                    gameActive = false;
+                    gameOverText.style.display = "block";
+                    clearInterval(gameInterval);
+                    updateLeaderboard(score);
+                    return;
+                }
+
+                if (mTop > 600) {
+                    meteor.remove();
+                    score++;
+                    scoreDisplay.textContent = score;
+                    setupSkinSelection();
+                } else {
+                    requestAnimationFrame(moveMeteor);
+                }
+            }
+            requestAnimationFrame(moveMeteor);
+        }
+
+        function updateLeaderboard(newScore) {
+            let data = JSON.parse(localStorage.getItem("planeLeaderboard") || "[]");
+            const name = prompt("Enter your name for the leaderboard:") || "Anonymous";
+            data.push({ name, score: newScore });
+            data.sort((a, b) => b.score - a.score);
+            data = data.slice(0, 5);
+            localStorage.setItem("planeLeaderboard", JSON.stringify(data));
+            renderLeaderboard();
+        }
+
+        function renderLeaderboard() {
+            const data = JSON.parse(localStorage.getItem("planeLeaderboard") || "[]");
+            leaderboard.innerHTML = `<h3>🏆Leaderboard🏆</h3><ol>${data.map(entry => `<li>${entry.name}: ${entry.score}</li>`).join('')}</ol>`;
+        }
+
+        restartBtn.addEventListener("click", () => {
+            spaceshipX = 180;
+            spaceship.style.left = `${spaceshipX}px`;
+            gameActive = true;
+            score = 0;
+            scoreDisplay.textContent = score;
+            gameOverText.style.display = "none";
+            const meteors = document.querySelectorAll(".meteor");
+            meteors.forEach(m => m.remove());
+            spaceship.style.backgroundImage = `url(${skins[selectedSkinIndex].url})`;
+            setupSkinSelection();
+            gameInterval = setInterval(spawnMeteor, 1000);
+        });
+
+        window.onload = () => {
+            spaceship.style.backgroundImage = `url(${skins[selectedSkinIndex].url})`;
+            setupSkinSelection();
+            renderLeaderboard();
+            gameInterval = setInterval(spawnMeteor, 1000);
+        };
+        function renderLeaderboard() {
+        const data = JSON.parse(localStorage.getItem("planeLeaderboard") || "[]");
+        let html = `<h3>🏆 Leaderboard 🏆</h3>`;
+
+        const podium = data.slice(0, 3);
+        const rest = data.slice(3, 5);
+
+        html += `
+        <div class="podium">
+            <div class="second">${podium[1] ? `${podium[1].name}<br>${podium[1].score}` : ""}</div>
+            <div class="first">${podium[0] ? `${podium[0].name}<br>${podium[0].score}` : ""}</div>
+            <div class="third">${podium[2] ? `${podium[2].name}<br>${podium[2].score}` : ""}</div>
+        </div>`;
+
+        leaderboard.innerHTML = html;
+    }
+    </script>
+</body>
+</html>
