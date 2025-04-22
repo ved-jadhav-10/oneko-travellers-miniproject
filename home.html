@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Oneko Travellers – Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #9DD1F1;
+      --secondary: #508AA8;
+      --accent: #C8E0F4;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--accent);
+      color: #1a1a1a;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in-out both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="m-0 p-0">
+
+  <!-- Header/Navbar -->
+  <header class="bg-black text-white p-6 flex justify-between items-center fixed top-0 w-full z-50 shadow-lg">
+    <div class="text-2xl font-extrabold tracking-wide">Oneko Travellers</div>
+    <nav class="flex space-x-6 text-lg">
+      <a href="home.html" class="hover:text-gray-400">Home</a>
+      <a href="form.html" class="hover:text-gray-400">Booking</a>
+      <a href="international.html" class="hover:text-gray-400">International Destinations</a>
+      <a href="national.html" class="hover:text-gray-400">National Destinations</a>
+      <a href="teams_Page.html" class="hover:text-gray-400">Team Members</a>
+      <a href="minigame.html" class="hover:text-gray-400">Minigame</a>
+      <a href="about.html" class="hover:text-gray-400">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- Spacer -->
+  <div class="h-14"></div>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 fade-in">
+    <h1 class="text-5xl font-bold text-gray-800 mb-6">🌍 Your Ultimate Travel Companion</h1>
+    <p class="text-xl max-w-3xl mx-auto">
+      Oneko Travellers is your go-to guide for smart travel. From hidden gems to global hubs, we equip you with the knowledge to explore confidently and meaningfully.
+    </p>
+  </section>
+
+  <!-- Info Highlights -->
+  <section class="bg-white rounded-2xl shadow-xl mx-6 md:mx-auto max-w-6xl p-10 mb-12 fade-in">
+    <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">✈️ What You’ll Find Here</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-xl font-semibold mb-2">🌐 Destination Guides</h3>
+        <p>Discover must-see attractions, cultural tips, and seasonal advice for cities and countries around the globe.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2">🧳 Travel Planning Tips</h3>
+        <p>Learn how to pack smart, budget better, and plan efficiently—whether you're a weekend explorer or full-time nomad.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2">🍲 Food & Culture Insights</h3>
+        <p>Dive into local cuisines, customs, and traditions that make each destination unique and unforgettable.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2">🚶 Off-the-Beaten-Path Ideas</h3>
+        <p>Skip the tourist traps. We highlight lesser-known destinations and experiences worth your attention.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reader Testimonials -->
+  <section class="max-w-5xl mx-auto px-6 text-center fade-in">
+    <h2 class="text-3xl font-bold mb-8 text-gray-800">💬 What Travellers Say</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <blockquote class="bg-white p-6 rounded-xl shadow-md">
+        <p class="italic">“I used Oneko Travellers before my Europe trip—absolutely priceless advice on local transport and food!”</p>
+        <footer class="mt-4 font-semibold">— Neha R.</footer>
+      </blockquote>
+      <blockquote class="bg-white p-6 rounded-xl shadow-md">
+        <p class="italic">“Great blog-style layout with real, practical info. Helped me save money in Japan without missing a thing.”</p>
+        <footer class="mt-4 font-semibold">— Omar S.</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-sm text-gray-700 text-center mt-20 border-t pt-4 pb-6 fade-in">
+    <p>© 2025 Oneko Travellers</p>
+    <p>Contact: <a href="mailto:onekotravellers@gmail.com" class="underline">onekotravellers@gmail.com</a> | 9767572415</p>
+  </footer>
+
+</body>
+</html>
